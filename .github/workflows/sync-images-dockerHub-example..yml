@@ -17,7 +17,7 @@ jobs:
   syncimages:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: library/openjdk:8u342
+      IMAGE_NAME: library/nginx:1.24-alpine
     steps:
     - name: skopeo-copy-action
       uses: coscene-io/skopeo-copy-action@v1.0.0
