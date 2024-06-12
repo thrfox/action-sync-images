@@ -17,7 +17,7 @@ jobs:
   syncimages:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: hengyunabc/arthas:3.7.2-no-jdk
+      IMAGE_NAME: library/node:14
     steps:
     - name: skopeo-copy-action
       uses: coscene-io/skopeo-copy-action@v1.0.0
