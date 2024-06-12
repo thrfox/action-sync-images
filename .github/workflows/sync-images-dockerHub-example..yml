@@ -17,13 +17,10 @@ jobs:
   syncimages:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repos
-      uses: actions/checkout@v3
-      
     - name: skopeo-copy-action
       uses: coscene-io/skopeo-copy-action@v1.0.0
       with:
         src-creds: ""
-        src-image: "docker.io/library/node:14"
+        src-image: "docker.io/library/nginx:1.24"
         dst-creds: "${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }}"
-        dst-image: "${{ secrets.DOCKER_REGISTRY }}/node:14"
+        dst-image: "${{ secrets.DOCKER_REGISTRY }}/nginx:1.24"
