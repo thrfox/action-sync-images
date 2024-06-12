@@ -16,11 +16,13 @@ on:
 jobs:
   syncimages:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: hengyunabc/arthas:3.7.2-no-jdk
     steps:
     - name: skopeo-copy-action
       uses: coscene-io/skopeo-copy-action@v1.0.0
       with:
         src-creds: ""
-        src-image: "docker.io/library/openjdk:8u342"
+        src-image: "docker.io/${{ env.IMAGE_NAME }}"
         dst-creds: "${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }}"
-        dst-image: "${{ secrets.DOCKER_REGISTRY }}/openjdk:8u342"
+        dst-image: "${{ secrets.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}"
