@@ -25,9 +25,14 @@ jobs:
     - name: Use Skopeo Tools Sync Image to Docker Hub
       run: |
         #!/usr/bin/env bash
-        skopeo copy --override-arch=arm64,amd64 --override-variant=v8 \
+        skopeo copy --override-arch=arm64 --override-variant=v8 \
+        --dest-creds ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }} \
+        docker://docker.io/${{ env.IMAGE_NAME }} docker://${{ secrets.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }} && \
+        skopeo copy --override-arch=amd64 \
         --dest-creds ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }} \
         docker://docker.io/${{ env.IMAGE_NAME }} docker://${{ secrets.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}
+
+        
         
  #   - name: skopeo-copy-action
  #     uses: truemark/skopeo-copy-action@v1
