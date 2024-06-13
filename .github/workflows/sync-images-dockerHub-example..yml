@@ -34,9 +34,9 @@ jobs:
       uses: truemark/skopeo-copy-action@v1
       with:
         src-image: "docker://docker.io/${{ env.IMAGE_NAME }}"
-        dest-image: "docker://${{ secrets.SWR_REGISTRY }}/${{ env.IMAGE_NAME }}"
+        dest-image: "docker://${{ secrets.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}"
         src-username: ""
         src-password: ""
-        dest-username: "${{ secrets.SWR_USERNAME }}"
-        dest-password: "${{ secrets.SWR_PASSWORD }}"
+        dest-username: "${{ secrets.DOCKER_USERNAME }}"
+        dest-password: "${{ secrets.DOCKER_PASSWORD }}"
         multi-arch: "all"
