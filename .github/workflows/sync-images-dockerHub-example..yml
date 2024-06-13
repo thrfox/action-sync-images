@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: library/nginx:1.23
+      IMAGE_ARCH: amd64,arm64v8
     steps:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2.9.1
@@ -25,7 +26,7 @@ jobs:
     - name: Use Skopeo Tools Sync Image to Docker Hub
       run: |
         #!/usr/bin/env bash
-        skopeo copy --override-arch=amd64,arm64/v8 \
+        skopeo copy --override-arch=${{ env.IMAGE_ARCH }} \
         --dest-creds ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }} \
         docker://docker.io/${{ env.IMAGE_NAME }} docker://${{ secrets.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}
         
