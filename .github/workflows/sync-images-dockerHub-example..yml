@@ -17,7 +17,7 @@ jobs:
   syncimages:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: library/alpine3.16
+      IMAGE_NAME: library/alpine:3.16
     steps:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2.9.1
